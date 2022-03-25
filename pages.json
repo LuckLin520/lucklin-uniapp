@@ -1,0 +1,55 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabbar/home",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/tabbar/user",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root" : "sub_pages1",
+			"pages" : [{
+				"path" : "test/test",
+				"style" : {
+					"navigationBarTitleText" : "测试页",
+					"navigationBarBackgroundColor":"#ffffff",
+					"navigationBarTextStyle":"black"
+				}
+			}]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "lucklin-uniapp",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"tabBar": {
+		"color": "#212121",
+		"selectedColor": "#2DA1E7",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+			"pagePath": "pages/tabbar/home",
+			"iconPath": "static/tabbar/recruit.png",
+			"selectedIconPath": "static/tabbar/recruitH.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/tabbar/user",
+			"iconPath": "static/tabbar/uesr.png",
+			"selectedIconPath": "static/tabbar/userH.png",
+			"text": "我的"
+		}]
+	}
+}
