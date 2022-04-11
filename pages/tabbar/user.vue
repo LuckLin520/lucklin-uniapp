@@ -1,11 +1,11 @@
 <template>
 	<view class="userPage">
-		<scroll-list ref="list" :option="{page: pageNo, size: pageSize}" :list.sync="list">
+		<zc-scroll-view ref="list" :option="{page: pageNo, size: pageSize}" :list.sync="list">
 			<view class="list-item" v-for="(item, index) of list" :key="index" @click="$refs.list.refresh()">
 				<view>{{ index }}-{{item.positionName}}</view>
 				<view>{{ item.companyName }}</view>
 			</view>
-		</scroll-list>
+		</zc-scroll-view>
 	</view>
 </template>
 
