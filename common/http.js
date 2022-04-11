@@ -1,6 +1,10 @@
 export default vm => {
 	uni.$u.http.setConfig(()=> ({
-		baseURL: 'http://192.168.0.99:18189',
+		baseURL: uni.getAccountInfoSync().miniProgram.envVersion === 'release'
+		?
+		'https://www.****.com'
+		:
+		'http://192.168.0.99:18189',
 		dataType: 'json',
 		timeout: 10000,
 		header: {}
