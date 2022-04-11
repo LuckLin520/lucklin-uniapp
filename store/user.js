@@ -15,6 +15,10 @@ export default {
 		async logout(store, payload) {
 			store.commit('save', {token: ''})
 			uni.setStorageSync('token', '')
+		},
+		async findJob(store, payload) {
+			const {data} = await uni.$u.http.post('/job/findJob', payload)
+			return data
 		}
 	},
 	mutations: {

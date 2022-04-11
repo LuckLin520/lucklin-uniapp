@@ -17,7 +17,6 @@ export default new Vuex.Store({
 	modules,
 	mutations: {
 		uToast(state, payload) {
-			console.log(payload)
 			state.uToast = payload
 		}
 	}

@@ -13,14 +13,14 @@
 	
 	
 	
-	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+	if (typeof WeixinJSBridge == 'object' && typeof WeixinJSBridge.invoke == 'function') {
 		handleFontSize()
 	} else if (document){
 		if (document.addEventListener) {
-			document.addEventListener("WeixinJSBridgeReady", handleFontSize, false)
+			document.addEventListener('WeixinJSBridgeReady', handleFontSize, false)
 		} else if (document.attachEvent) {
-			document.attachEvent("WeixinJSBridgeReady", handleFontSize)
-			document.attachEvent("onWeixinJSBridgeReady", handleFontSize)
+			document.attachEvent('WeixinJSBridgeReady', handleFontSize)
+			document.attachEvent('onWeixinJSBridgeReady', handleFontSize)
 		}
 	}
 

@@ -4,7 +4,7 @@
 
 <script>
 	export default {
-		name:"zc-u-toast",
+		name: 'zc-u-toast',
 		watch: {
 			'$store.state.uToast'(params) {
 				this.$refs.uToast.show({

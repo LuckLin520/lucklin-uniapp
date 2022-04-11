@@ -1,6 +1,6 @@
 export default vm => {
 	uni.$u.http.setConfig(()=> ({
-		baseURL: 'https://192.168.0.95:18189',
+		baseURL: 'http://192.168.0.99:18189',
 		dataType: 'json',
 		timeout: 10000,
 		header: {}
