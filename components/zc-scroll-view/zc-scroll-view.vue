@@ -492,7 +492,7 @@ export default {
 		// 加载数据
 		async fetchLoad(paging) {
 			console.log('加载-----')
-			const res = await this.$parent.getRemoteList(paging)
+			const res = await this.getRemoteList.call(this.$parent, paging)
 			if(res.status) {
 				this.$emit('update:list', [...this.list, ...res.data])
 				this.$nextTick(()=> {
@@ -507,7 +507,7 @@ export default {
 			console.log('刷新-----')
 			const size = this.list.length
 			const page = 1
-			const res = await this.$parent.getRemoteList({ page, size })
+			const res = await this.getRemoteList.call(this.$parent, { page, size })
 			if(res.status) {
 				this.$emit('update:list', res.data)
 				this.refreshSuccess({ list: res.data, total: res.total })
@@ -534,8 +534,8 @@ export default {
 		scrollContentStyle() {
 			const style = {}
 			const { pullDownHeight, pulldowning, showPullDown } = this
-			style.transform = showPullDown ? `translateY(${pullDownHeight}px)` : `translateY(0px)`
-			style.transition = pulldowning ? `transform 100ms ease-out` : `transform 200ms cubic-bezier(0.19,1.64,0.42,0.72)`
+			style.transform = showPullDown ? `translateY(${pullDownHeight}px)` : 'translateY(0px)'
+			style.transition = pulldowning ? 'transform 100ms ease-out' : 'transform 200ms cubic-bezier(0.19,1.64,0.42,0.72)'
 			return style
 		},
 		// 下拉刷新样式

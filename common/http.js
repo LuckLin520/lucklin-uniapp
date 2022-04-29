@@ -1,6 +1,12 @@
 export default vm => {
 	uni.$u.http.setConfig(()=> ({
-		baseURL: uni.getAccountInfoSync().miniProgram.envVersion === 'release'
+		baseURL:
+		//#ifdef H5
+		process.env.NODE_ENV === 'production'
+		//#endif
+		//#ifndef H5
+		uni.getAccountInfoSync().miniProgram.envVersion === 'release'
+		//#endif
 		?
 		'https://www.****.com'
 		:
