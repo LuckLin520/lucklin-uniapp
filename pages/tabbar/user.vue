@@ -1,45 +1,40 @@
 <template>
-	<view class="userPage">
-		<zc-scroll-view ref="list" :option="{page: pageNo, size: pageSize}" :list.sync="list" :getRemoteList="getRemoteList">
-			<view class="list-item" v-for="(item, index) of list" :key="index" @click="$refs.list.refresh()">
-				<view>{{ index }}-{{item.positionName}}</view>
-				<view>{{ item.companyName }}</view>
-			</view>
-		</zc-scroll-view>
+	<view>
+		<zc-pagination ref="zcPagination" :option="{pageSize, pageNo}" :list.sync="list" :getRemoteList="getRemoteList">
+			<zc-jobs v-for="(item, index) of list" :key="index" :item="item" :index="index"/>
+			<zc-empty slot="emptyState"/>
+		</zc-pagination>
 	</view>
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			pageSize: 10,
-			pageNo: 1,
-			list: []
-		}
-	},
-	methods: {
-		/*
-		* return Promise({data: Array, status: Boolean})
-		*/
-		getRemoteList(paging) {
-			const params = {
-				title: '精装修',
-				pageNo: paging.page,
-				pageSize: paging.size
+	export default {
+		data() {
+			return {
+				pageSize: 14,
+				pageNo: 1,
+				list: []
 			}
-			return this.$store.dispatch('user/findJob', params)
+		},
+		onShow() {
+			// 刷新数据
+			this.$refs['zcPagination'] && this.$refs['zcPagination'].refresh()
+		},
+		onReady() {
+			this.$refs['zcPagination'].load()
+		},
+		onReachBottom() {
+			this.$refs['zcPagination'].load()
+		},
+		methods: {
+			getRemoteList({ pageSize, pageNo }) {
+				const params = {
+					title: '精装修',
+					pageNo,
+					pageSize
+				}
+				return this.$store.dispatch('user/findJob', params)
+			}
 		}
 	}
-}
-
 </script>
-<style lang="scss" scoped>
-	.userPage{
-		.list-item{
-			margin: 10rpx 0;
-			padding: 20rpx 0;
-			background-color: red;
-		}
-	}
-</style>
